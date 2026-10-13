@@ -414,18 +414,14 @@
 
         <!-- 面板2：专项刷题 -->
         <div id="panel-browse" class="panel">
-            <p class="panel-desc">按大纲考点或题型类目集中突破，一道接一道顺序专项训练</p>
+            <p class="panel-desc">按大纲知识点考点集中突破，一道接一道顺序专项训练</p>
             <div class="syllabus-section">
                 <div class="syllabus-title">① 经典控制理论考点</div>
                 <div class="type-buttons" id="browse-classical-btns"></div>
             </div>
-            <div class="syllabus-section">
+            <div class="syllabus-section" style="margin-bottom: 0;">
                 <div class="syllabus-title modern">② 现代控制理论大类</div>
                 <div class="type-buttons" id="browse-modern-btns"></div>
-            </div>
-            <div class="syllabus-section" style="margin-bottom: 0;">
-                <div class="syllabus-title" style="color: #d69e2e;">③ 考卷题型分类</div>
-                <div class="type-buttons" id="browse-format-btns"></div>
             </div>
         </div>
 
@@ -437,18 +433,14 @@
 
         <!-- 面板4：专项汇总平铺 -->
         <div id="panel-list" class="panel">
-            <p class="panel-desc">选择考点或题型类目，在下方整屏平铺展开所有对应真题进行通览复习</p>
+            <p class="panel-desc">选择知识点考点类目，在下方整屏平铺展开所有对应真题进行通览复习</p>
             <div class="syllabus-section">
                 <div class="syllabus-title">① 经典控制理论考点</div>
                 <div class="type-buttons" id="list-classical-btns"></div>
             </div>
-            <div class="syllabus-section">
+            <div class="syllabus-section" style="margin-bottom: 0;">
                 <div class="syllabus-title modern">② 现代控制理论大类</div>
                 <div class="type-buttons" id="list-modern-btns"></div>
-            </div>
-            <div class="syllabus-section" style="margin-bottom: 0;">
-                <div class="syllabus-title" style="color: #d69e2e;">③ 考卷题型分类</div>
-                <div class="type-buttons" id="list-format-btns"></div>
             </div>
         </div>
 
@@ -479,7 +471,6 @@
                 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span id="q-year-tag" class="year-tag">2024年真题</span>
                     <span id="q-info-tag" class="info-tag">第 1 题</span>
-                    <span id="q-format-tag" class="format-tag">计算分析大题</span>
                     <span id="q-type-tag" class="type-tag">📈 根轨迹法</span>
                 </div>
                 <button id="q-wrong-btn" class="wrong-toggle-btn" onclick="toggleCurrentWrong(event)">
@@ -640,12 +631,10 @@
             }
         }
 
-        // 统计知识点及题型分布
+        // 统计知识点分布
         const typeCounts = {};
-        const formatCounts = {};
         allQ.forEach(q => { 
             typeCounts[q.type] = (typeCounts[q.type] || 0) + 1; 
-            formatCounts[q.q_format] = (formatCounts[q.q_format] || 0) + 1;
         });
 
         // 严格遵循考研官方大纲分类配置（6类经典 + 1类现代）
@@ -662,26 +651,19 @@
             { name: '现代控制理论', emoji: '🚀', desc: '状态空间/运动分析/能控能观/李雅普诺夫/极点配置/观测器' }
         ];
 
-        // 考卷题型分类配置
-        const formatTypes = [
-            { name: '计算分析大题', emoji: '📐', desc: '历年分值最大核心综合大题' },
-            { name: '简答题', emoji: '📝', desc: '基本概念/系统原理/定理分析' },
-            { name: '填空题', emoji: '✏️', desc: '基本概念/定义与公式填空' }
-        ];
-
         // 统计行更新
         const classicalTotal = allQ.filter(q => q.major_cat === '经典控制理论').length;
         const modernTotal = allQ.filter(q => q.major_cat === '现代控制理论').length;
         document.getElementById('stats-line').textContent =
             `收录 2005-2025 年共 ${allQ.length} 道大纲高清真题（经典控制 ${classicalTotal} 题 · 现代控制 ${modernTotal} 题）`;
 
-        // 生成大纲分类及题型按钮
-        function renderSyllabusButtons(classicalId, modernId, formatId, clickFn) {
+        // 生成大纲分类按钮
+        function renderSyllabusButtons(classicalId, modernId, clickFnName) {
             const classicalContainer = document.getElementById(classicalId);
             let cHtml = '';
             classicalTypes.forEach(t => {
                 const count = typeCounts[t.name] || 0;
-                cHtml += `<button class="type-btn" onclick="${clickFn}('type', '${t.name}', event)">
+                cHtml += `<button class="type-btn" onclick="${clickFnName}('${t.name}', event)">
                     <span>${t.emoji} ${t.name}</span>
                     <span class="count">${count}题</span>
                 </button>`;
@@ -692,30 +674,17 @@
             let mHtml = '';
             modernTypes.forEach(t => {
                 const count = typeCounts[t.name] || 0;
-                mHtml += `<button class="type-btn modern-btn" onclick="${clickFn}('type', '${t.name}', event)" style="font-weight:700;">
+                mHtml += `<button class="type-btn modern-btn" onclick="${clickFnName}('${t.name}', event)" style="font-weight:700;">
                     <span>${t.emoji} ${t.name}</span>
                     <span class="count">${count}题</span>
                 </button>`;
             });
             modernContainer.innerHTML = mHtml;
-
-            if (formatId) {
-                const formatContainer = document.getElementById(formatId);
-                let fHtml = '';
-                formatTypes.forEach(t => {
-                    const count = formatCounts[t.name] || 0;
-                    fHtml += `<button class="type-btn" style="background-color:#fffff0;border:1px solid #f6e05e;color:#744210;" onclick="${clickFn}('format', '${t.name}', event)">
-                        <span>${t.emoji} ${t.name}</span>
-                        <span class="count" style="background:rgba(214,158,46,0.18);">${count}题</span>
-                    </button>`;
-                });
-                formatContainer.innerHTML = fHtml;
-            }
         }
 
-        renderSyllabusButtons('random-classical-btns', 'random-modern-btns', null, (mode, val, e) => randomDraw(val, e));
-        renderSyllabusButtons('browse-classical-btns', 'browse-modern-btns', 'browse-format-btns', (mode, val, e) => startBrowse(mode, val, e));
-        renderSyllabusButtons('list-classical-btns', 'list-modern-btns', 'list-format-btns', (mode, val, e) => showListView(mode, val, e));
+        renderSyllabusButtons('random-classical-btns', 'random-modern-btns', 'randomDraw');
+        renderSyllabusButtons('browse-classical-btns', 'browse-modern-btns', 'startBrowse');
+        renderSyllabusButtons('list-classical-btns', 'list-modern-btns', 'showListView');
 
         // 生成年份按钮 (2005 - 2025)
         function makeYearButtons() {
@@ -782,16 +751,12 @@
             const img = document.getElementById('q-img');
             const yearTag = document.getElementById('q-year-tag');
             const infoTag = document.getElementById('q-info-tag');
-            const formatTag = document.getElementById('q-format-tag');
             const typeTag = document.getElementById('q-type-tag');
             const placeholder = document.getElementById('q-placeholder');
 
             img.src = q.url + '?v=' + CACHE_VERSION;
             yearTag.innerHTML = `📅 ${q.year}真题`;
             infoTag.textContent = q.q_num;
-            if (formatTag) {
-                formatTag.textContent = q.q_format || '计算分析大题';
-            }
             
             const isModern = q.type === '现代控制理论';
             typeTag.textContent = (isModern ? '🚀 ' : '') + q.type;
@@ -826,19 +791,15 @@
             document.getElementById('nav-bar').style.display = 'none';
         }
 
-        // ======== 专项顺序刷题 (支持考点或题型) ========
-        function startBrowse(filterKind, filterVal, event) {
+        // ======== 专项顺序刷题 ========
+        function startBrowse(type, event) {
             if (event) {
                 document.querySelectorAll('#panel-browse .type-btn').forEach(b => b.classList.remove('active'));
                 event.currentTarget.classList.add('active');
             }
-            if (filterKind === 'format') {
-                currentList = allQ.filter(q => (q.q_format || '计算分析大题') === filterVal).sort((a,b) => a.year_num - b.year_num);
-            } else {
-                currentList = allQ.filter(q => q.type === filterVal).sort((a,b) => a.year_num - b.year_num);
-            }
+            currentList = allQ.filter(q => q.type === type).sort((a,b) => a.year_num - b.year_num);
             currentIndex = 0;
-            if (currentList.length === 0) { alert('该分类暂无题目'); return; }
+            if (currentList.length === 0) { alert('该大类暂无题目'); return; }
             renderQuestion(currentList[currentIndex]);
             updateNavBar();
             document.getElementById('nav-bar').style.display = 'flex';
@@ -941,30 +902,22 @@
                 `第 ${currentIndex + 1} / ${currentList.length} 题`;
         }
 
-        // ======== 专项汇总平铺 (支持考点或题型) ========
-        function showListView(filterKind, filterVal, event) {
+        // ======== 专项汇总平铺 ========
+        function showListView(type, event) {
             if (event) {
                 document.querySelectorAll('#panel-list .type-btn').forEach(b => b.classList.remove('active'));
                 event.currentTarget.classList.add('active');
             }
-            let list;
-            let titlePrefix;
-            if (filterKind === 'format') {
-                list = allQ.filter(q => (q.q_format || '计算分析大题') === filterVal).sort((a,b) => a.year_num - b.year_num);
-                titlePrefix = `考卷题型：<b>${filterVal}</b>`;
-            } else {
-                list = allQ.filter(q => q.type === filterVal).sort((a,b) => a.year_num - b.year_num);
-                titlePrefix = `大纲考点：<b>${filterVal}</b>`;
-            }
+            const list = allQ.filter(q => q.type === type).sort((a,b) => a.year_num - b.year_num);
             const container = document.getElementById('list-view');
             
             if (list.length === 0) {
-                container.innerHTML = '<div class="placeholder">该分类下暂无题目</div>';
+                container.innerHTML = '<div class="placeholder">该大类下暂无题目</div>';
                 return;
             }
 
             let html = `<div style="text-align:center;color:#718096;font-size:0.92rem;margin-bottom:10px;">
-                ${titlePrefix} · 共 <b>${list.length}</b> 道真题（按年份从2005到2025排序）
+                大纲考点：<b>${type}</b> · 共 <b>${list.length}</b> 道真题大题（按年份从2005到2025排序）
             </div>`;
 
             list.forEach((q, idx) => {
@@ -976,7 +929,6 @@
                         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                             <span class="year-tag">📅 ${q.year}真题</span>
                             <span class="info-tag">${q.q_num}</span>
-                            <span class="format-tag">${q.q_format || '计算分析大题'}</span>
                             <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
                         </div>
                         <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
