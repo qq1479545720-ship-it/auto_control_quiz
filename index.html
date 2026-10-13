@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>自动控制原理 - 考研大纲分类真题刷题系统</title>
+    
+    <script src="classified_data.js"></script>
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; 
+            background-color: #f7fafc; 
+            display: flex; flex-direction: column; align-items: center; 
+            padding: 16px 12px; color: #2d3748;
+        }
+        .container { max-width: 860px; width: 100%; }
+        
+        /* 顶部标题栏 */
+        .header { text-align: center; margin-bottom: 18px; }
+        .header h1 { font-size: 1.55rem; color: #1a202c; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .header p { color: #718096; font-size: 0.88rem; }
+        .syllabus-tag { 
+            display: inline-block; 
+            background: #ebf8ff; 
+            color: #2b6cb0; 
+            border: 1px solid #bee3f8; 
+            padding: 4px 14px; 
+            border-radius: 14px; 
+            font-size: 0.82rem; 
+            font-weight: 600; 
+            margin-top: 6px; 
+        }
+
+        /* 顶部模式切换标签 */
+        .tabs { display: flex; background: #e2e8f0; border-radius: 10px; padding: 4px; margin-bottom: 16px; gap: 4px; }
+        .tab { 
+            flex: 1; text-align: center; padding: 10px 4px; cursor: pointer; 
+            border-radius: 8px; font-weight: 600; color: #4a5568; 
+            transition: all 0.25s; font-size: 0.92rem; 
+            display: flex; align-items: center; justify-content: center; gap: 3px;
+        }
+        .tab:hover { color: #2b6cb0; }
+        .tab.active { background: white; color: #2b6cb0; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+
+        /* 错题数微标 */
+        .badge {
+            background: #cbd5e0;
+            color: #4a5568;
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .badge.has-items {
+            background: #e53e3e;
+            color: white;
+        }
+        .tab.active .badge.has-items {
+            background: #c53030;
+            color: white;
+        }
+
+        /* 功能面板 */
+        .panel { display: none; width: 100%; background: white; padding: 18px 16px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 16px; }
+        .panel.active { display: block; }
+        .panel-desc { color: #718096; margin-bottom: 14px; font-size: 0.9rem; text-align: center; }
+
+        /* 大纲分组结构 */
+        .syllabus-section { margin-bottom: 14px; }
+        .syllabus-title { 
+            font-size: 0.88rem; 
+            font-weight: 700; 
+            color: #4a5568; 
+            margin-bottom: 8px; 
+            padding-left: 6px;
+            border-left: 3px solid #3182ce;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .syllabus-title.modern { border-left-color: #805ad5; color: #553c9a; }
+
+        /* 按钮与交互控件 */
+        button { border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        button:active { transform: scale(0.97); }
+        
+        .btn-center-wrap { text-align: center; margin-bottom: 16px; }
+        .btn-primary { 
+            padding: 12px 28px; 
+            background: linear-gradient(135deg, #3182ce, #2b6cb0); 
+            color: white; 
+            font-size: 1rem; 
+            border-radius: 9px;
+            box-shadow: 0 4px 12px rgba(49,130,206,0.25); 
+            width: 80%; 
+            max-width: 320px; 
+            letter-spacing: 0.5px;
+        }
+        .btn-primary:hover { background: linear-gradient(135deg, #2b6cb0, #2c5282); }
+
+        .type-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+        .type-btn { 
+            background-color: #edf2f7; 
+            color: #2d3748; 
+            padding: 9px 13px; 
+            font-size: 0.88rem; 
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .type-btn:hover { background-color: #e2e8f0; color: #1a202c; }
+        .type-btn.active { background-color: #3182ce; color: white; }
+        .type-btn.modern-btn { background-color: #faf5ff; border: 1px solid #e9d8fd; color: #6b46c1; }
+        .type-btn.modern-btn:hover { background-color: #f3e8ff; }
+        .type-btn.modern-btn.active { background-color: #805ad5; color: white; border-color: #805ad5; }
+        
+        .type-btn .count { 
+            font-size: 0.76rem; 
+            background: rgba(0,0,0,0.06); 
+            padding: 1px 6px; 
+            border-radius: 8px; 
+        }
+        .type-btn.active .count { background: rgba(255,255,255,0.25); color: white; }
+
+        .year-grid { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-height: 140px; overflow-y: auto; padding: 4px; }
+        .year-btn { padding: 6px 11px; background: #edf2f7; font-size: 0.84rem; border-radius: 6px; }
+        .year-btn:hover { background: #e2e8f0; }
+        .year-btn.active { background: #3182ce; color: white; }
+
+        /* 错题操作按钮 */
+        .action-btn {
+            padding: 7px 14px;
+            background: #3182ce;
+            color: white;
+            font-size: 0.86rem;
+            border-radius: 7px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .action-btn:hover { background: #2b6cb0; }
+        .action-btn.btn-outline {
+            background: white;
+            color: #3182ce;
+            border: 1px solid #3182ce;
+        }
+        .action-btn.btn-outline:hover { background: #ebf8ff; }
+        .action-btn.btn-danger {
+            background: #fff5f5;
+            color: #e53e3e;
+            border: 1px solid #feb2b2;
+        }
+        .action-btn.btn-danger:hover { background: #fed7d7; }
+
+        /* 题目卡片区 */
+        .card { 
+            background: white; 
+            padding: 16px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06); 
+            min-height: 220px; 
+            display: flex; 
+            flex-direction: column; 
+            width: 100%; 
+        }
+
+        /* 题目卡片顶栏信息 */
+        .card-header {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #edf2f7;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .year-tag {
+            background-color: #e53e3e;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .info-tag {
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .type-tag {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            font-size: 0.86rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .type-tag.modern-tag {
+            background-color: #faf5ff;
+            color: #6b46c1;
+        }
+
+        /* 错题标记切换按钮 */
+        .wrong-toggle-btn {
+            background: #edf2f7;
+            color: #4a5568;
+            border: 1px solid #cbd5e0;
+            padding: 5px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .wrong-toggle-btn:hover {
+            background: #feebc8;
+            color: #c05621;
+            border-color: #fbd38d;
+        }
+        .wrong-toggle-btn.active {
+            background: linear-gradient(135deg, #dd6b20, #c05621);
+            color: white;
+            border-color: #dd6b20;
+            box-shadow: 0 2px 8px rgba(221, 107, 32, 0.35);
+        }
+        .wrong-toggle-btn.active:hover {
+            background: linear-gradient(135deg, #c05621, #9c4221);
+        }
+
+        /* 图片题目渲染容器：纯净呈现，零水印，无截断 */
+        .img-container { 
+            width: 100%; 
+            display: none; 
+            text-align: center;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .img-container img { 
+            width: 100%; 
+            height: auto; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            background: white;
+            cursor: zoom-in;
+            transition: opacity 0.2s;
+        }
+        .zoom-tip {
+            font-size: 0.75rem;
+            color: #a0aec0;
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        .placeholder { text-align: center; color: #a0aec0; margin: auto; font-size: 1.05rem; padding: 48px 0; }
+
+        /* 题目导航条 */
+        .nav-bar { 
+            display: none; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-top: 14px; 
+            width: 100%; 
+            background: white; 
+            padding: 10px 14px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); 
+        }
+        .nav-btn { 
+            padding: 9px 18px; 
+            background: #edf2f7; 
+            color: #2d3748; 
+            font-size: 0.92rem; 
+            border-radius: 7px;
+        }
+        .nav-btn:hover { background: #e2e8f0; }
+        .nav-info { color: #4a5568; font-size: 0.92rem; font-weight: 600; }
+
+        /* 专项汇总列表视图 */
+        .list-container { display: none; width: 100%; flex-direction: column; gap: 16px; margin-top: 8px; }
+        .list-item { 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05); 
+            width: 100%; 
+            overflow: hidden;
+            padding: 14px;
+        }
+        .list-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #edf2f7;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* 放大查看模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.82);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            cursor: zoom-out;
+        }
+        .modal img {
+            max-width: 96vw;
+            max-height: 94vh;
+            border-radius: 6px;
+            background: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        /* Toast 提示浮层 */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(26, 32, 44, 0.92);
+            color: white;
+            padding: 9px 20px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2000;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .fade-in { animation: fadeIn 0.2s ease-in-out; }
+
+        @media (max-width: 600px) {
+            body { padding: 10px 8px; }
+            .header h1 { font-size: 1.35rem; }
+            .tab { font-size: 0.82rem; padding: 8px 1px; }
+            .type-btn { font-size: 0.82rem; padding: 8px 10px; }
+            .card { padding: 12px 10px; }
+            .year-tag { font-size: 0.86rem; padding: 3px 8px; }
+            .info-tag { font-size: 0.82rem; }
+            .action-btn { font-size: 0.8rem; padding: 6px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 自动控制原理历年真题系统</h1>
+            <p>2005年 ～ 2025年 连续21年官方考研真题题库</p>
+            <span class="syllabus-tag" id="stats-line">加载考试大纲题库中...</span>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab(event, 'random')">🔀 随机抽题</div>
+            <div class="tab" onclick="switchTab(event, 'browse')">🎯 专项刷题</div>
+            <div class="tab" onclick="switchTab(event, 'year')">📅 历年全卷</div>
+            <div class="tab" onclick="switchTab(event, 'list')">📋 专项汇总</div>
+            <div class="tab" onclick="switchTab(event, 'wrong')" id="tab-wrong">📕 错题本 <span id="tab-wrong-badge" class="badge">0</span></div>
+        </div>
+        
+        <!-- 面板1：随机抽题 -->
+        <div id="panel-random" class="panel active">
+            <div class="btn-center-wrap">
+                <button class="btn-primary" onclick="randomDraw('all')">🎲 全考点任意抽取一题</button>
+            </div>
+            
+            <div class="syllabus-section">
+                <div class="syllabus-title">① 经典控制理论</div>
+                <div class="type-buttons" id="random-classical-btns"></div>
+            </div>
+            <div class="syllabus-section" style="margin-bottom: 0;">
+                <div class="syllabus-title modern">② 现代控制理论</div>
+                <div class="type-buttons" id="random-modern-btns"></div>
+            </div>
+        </div>
+
+        <!-- 面板2：专项刷题 -->
+        <div id="panel-browse" class="panel">
+            <p class="panel-desc">按大纲知识点集中突破，一道接一道顺序专项训练</p>
+            <div class="syllabus-section">
+                <div class="syllabus-title">① 经典控制理论考点</div>
+                <div class="type-buttons" id="browse-classical-btns"></div>
+            </div>
+            <div class="syllabus-section" style="margin-bottom: 0;">
+                <div class="syllabus-title modern">② 现代控制理论大类</div>
+                <div class="type-buttons" id="browse-modern-btns"></div>
+            </div>
+        </div>
+
+        <!-- 面板3：历年全卷 -->
+        <div id="panel-year" class="panel">
+            <p class="panel-desc">选择指定考研年份，顺序浏览该年全套考卷的所有大题（2005～2025）</p>
+            <div class="year-grid" id="year-btns"></div>
+        </div>
+
+        <!-- 面板4：专项汇总平铺 -->
+        <div id="panel-list" class="panel">
+            <p class="panel-desc">选择考点类目，在下方整屏平铺展开该知识点的所有真题进行通览复习</p>
+            <div class="syllabus-section">
+                <div class="syllabus-title">① 经典控制理论考点</div>
+                <div class="type-buttons" id="list-classical-btns"></div>
+            </div>
+            <div class="syllabus-section" style="margin-bottom: 0;">
+                <div class="syllabus-title modern">② 现代控制理论大类</div>
+                <div class="type-buttons" id="list-modern-btns"></div>
+            </div>
+        </div>
+
+        <!-- 面板5：错题本 -->
+        <div id="panel-wrong" class="panel">
+            <p class="panel-desc">随时温故知新，集中攻克做错或需要反复巩固的高频难点大题</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid #edf2f7;">
+                <div style="font-size: 0.95rem; font-weight: 700; color: #2d3748;">
+                    📕 已收录错题：<span id="wrong-summary-count" style="color: #e53e3e; font-size: 1.15rem;">0</span> 道
+                </div>
+                <div id="wrong-actions" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="action-btn" onclick="startWrongPractice(event)">🎯 逐题重做</button>
+                    <button class="action-btn btn-outline" onclick="showWrongListView(event)">📋 整屏通览</button>
+                    <button class="action-btn btn-danger" onclick="clearAllWrong()">🗑️ 清空错题本</button>
+                </div>
+            </div>
+            <div id="wrong-empty-tip" class="placeholder" style="padding: 28px 0;">
+                <div style="font-size: 2.8rem; margin-bottom: 10px;">🌟</div>
+                目前还没有错题记录！<br>
+                <span style="font-size: 0.85rem; color: #a0aec0; margin-top: 6px; display: inline-block;">在任意模式刷题时，点击题目右上角的【☆ 标为错题】即可自动保存在这里。</span>
+            </div>
+        </div>
+        
+        <!-- 单题展示卡片 -->
+        <div id="single-card" class="card">
+            <!-- 顶栏信息条：清晰标明年份、题号、大纲分类，右侧带错题标记按钮 -->
+            <div id="card-header" class="card-header">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span id="q-year-tag" class="year-tag">2024年真题</span>
+                    <span id="q-info-tag" class="info-tag">第 1 题</span>
+                    <span id="q-type-tag" class="type-tag">📈 根轨迹法</span>
+                </div>
+                <button id="q-wrong-btn" class="wrong-toggle-btn" onclick="toggleCurrentWrong(event)">
+                    <span id="q-wrong-icon">☆</span>
+                    <span id="q-wrong-text">标为错题</span>
+                </button>
+            </div>
+
+            <!-- 高清原图容器：纯净呈现，零水印遮挡，保留全部公式与图框 -->
+            <div id="img-container" class="img-container">
+                <img id="q-img" src="" alt="题目高清图片" loading="eager" onclick="openZoom(this.src)">
+                <div class="zoom-tip">🔍 点击题目图片可全屏高清放大查看</div>
+            </div>
+
+            <div id="q-placeholder" class="placeholder">
+                <div style="font-size: 3rem; margin-bottom: 14px;">📖</div>
+                请在上方选择大纲类目或抽取模式开始刷题
+            </div>
+        </div>
+
+        <!-- 顺序刷题导航按钮条 -->
+        <div id="nav-bar" class="nav-bar">
+            <button class="nav-btn" onclick="navPrev()">⬅️ 上一题</button>
+            <span id="nav-info" class="nav-info">第 1 / 10 题</span>
+            <button class="nav-btn" onclick="navNext()">下一题 ➡️</button>
+        </div>
+
+        <!-- 专项汇总平铺展示容器 -->
+        <div id="list-view" class="list-container"></div>
+    </div>
+
+    <!-- 放大模态框 -->
+    <div id="img-modal" class="modal" onclick="closeZoom()">
+        <img id="modal-img" src="" alt="放大查看">
+    </div>
+
+    <!-- Toast 提示条 -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const allQ = typeof classifiedImages !== 'undefined' ? classifiedImages : [];
+        const CACHE_VERSION = Date.now();
+
+        // ======== 错题本本地存储管理 (localStorage) ========
+        const WRONG_STORAGE_KEY = 'auto_control_wrong_ids';
+
+        function getWrongSet() {
+            try {
+                const raw = localStorage.getItem(WRONG_STORAGE_KEY);
+                return new Set(raw ? JSON.parse(raw) : []);
+            } catch (e) {
+                return new Set();
+            }
+        }
+
+        function saveWrongSet(set) {
+            try {
+                localStorage.setItem(WRONG_STORAGE_KEY, JSON.stringify(Array.from(set)));
+            } catch (e) {}
+            updateWrongBadges();
+        }
+
+        function isWrong(id) {
+            return getWrongSet().has(id);
+        }
+
+        function updateWrongBadges() {
+            const set = getWrongSet();
+            const count = set.size;
+            
+            // 顶部导航 Tab 徽章
+            const badge = document.getElementById('tab-wrong-badge');
+            badge.textContent = count;
+            if (count > 0) {
+                badge.classList.add('has-items');
+            } else {
+                badge.classList.remove('has-items');
+            }
+
+            // 错题面板统计
+            const summaryCount = document.getElementById('wrong-summary-count');
+            if (summaryCount) summaryCount.textContent = count;
+
+            const emptyTip = document.getElementById('wrong-empty-tip');
+            const actions = document.getElementById('wrong-actions');
+            if (emptyTip) emptyTip.style.display = count === 0 ? 'block' : 'none';
+            if (actions) actions.style.display = count === 0 ? 'none' : 'flex';
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 1800);
+        }
+
+        function toggleWrong(id, event) {
+            if (event) event.stopPropagation();
+            const set = getWrongSet();
+            let added = false;
+            if (set.has(id)) {
+                set.delete(id);
+                showToast('已从错题本移出');
+            } else {
+                set.add(id);
+                added = true;
+                showToast('⭐ 已成功收录到错题本！');
+            }
+            saveWrongSet(set);
+
+            // 更新当前主卡片上的错题按钮（如果正显示该题）
+            if (currentQuestion && currentQuestion.id === id) {
+                updateCardWrongButton(added);
+            }
+
+            // 更新平铺列表里所有对应的错题按钮
+            document.querySelectorAll(`.list-wrong-btn[data-id="${id}"]`).forEach(btn => {
+                btn.classList.toggle('active', added);
+                btn.innerHTML = added ? '★ 已收录' : '☆ 标为错题';
+            });
+        }
+
+        function updateCardWrongButton(isMarked) {
+            const btn = document.getElementById('q-wrong-btn');
+            const icon = document.getElementById('q-wrong-icon');
+            const text = document.getElementById('q-wrong-text');
+            if (isMarked) {
+                btn.classList.add('active');
+                icon.textContent = '★';
+                text.textContent = '已收录错题';
+            } else {
+                btn.classList.remove('active');
+                icon.textContent = '☆';
+                text.textContent = '标为错题';
+            }
+        }
+
+        function toggleCurrentWrong(event) {
+            if (!currentQuestion) return;
+            toggleWrong(currentQuestion.id, event);
+        }
+
+        function clearAllWrong() {
+            const set = getWrongSet();
+            if (set.size === 0) return;
+            if (confirm(`确定要清空全部 ${set.size} 道错题记录吗？清空后不可恢复。`)) {
+                localStorage.removeItem(WRONG_STORAGE_KEY);
+                updateWrongBadges();
+                showToast('错题本已清空');
+                if (currentMode === 'wrong') {
+                    document.getElementById('list-view').style.display = 'none';
+                    document.getElementById('single-card').style.display = 'none';
+                    document.getElementById('nav-bar').style.display = 'none';
+                }
+            }
+        }
+
+        // 统计知识点分布
+        const typeCounts = {};
+        allQ.forEach(q => { typeCounts[q.type] = (typeCounts[q.type] || 0) + 1; });
+
+        // 严格遵循考研官方大纲分类配置（5类经典 + 1类现代）
+        const classicalTypes = [
+            { name: '控制系统的数学模型', emoji: '🔧', desc: '传递函数/方框图/信号流图/梅逊公式' },
+            { name: '时域分析法', emoji: '⏱️', desc: '性能指标/稳态误差/劳斯判据' },
+            { name: '根轨迹法', emoji: '📈', desc: '绘制根轨迹/参数根轨迹/系统性能分析' },
+            { name: '频率响应法', emoji: '🌊', desc: 'Nyquist图/Bode图/裕度/超前滞后校正' },
+            { name: '离散控制系统', emoji: '💻', desc: '采样/Z变换/脉冲传递函数/稳定性分析' }
+        ];
+
+        const modernTypes = [
+            { name: '现代控制理论', emoji: '🚀', desc: '状态空间/运动分析/能控能观/李雅普诺夫/极点配置/观测器' }
+        ];
+
+        // 统计行更新
+        const classicalTotal = allQ.filter(q => q.major_cat === '经典控制理论').length;
+        const modernTotal = allQ.filter(q => q.major_cat === '现代控制理论').length;
+        document.getElementById('stats-line').textContent =
+            `收录 2005-2025 年共 ${allQ.length} 道大纲高清真题（经典控制 ${classicalTotal} 题 · 现代控制 ${modernTotal} 题）`;
+
+        // 生成大纲分类按钮
+        function renderSyllabusButtons(classicalId, modernId, clickFn) {
+            const classicalContainer = document.getElementById(classicalId);
+            let cHtml = '';
+            classicalTypes.forEach(t => {
+                const count = typeCounts[t.name] || 0;
+                cHtml += `<button class="type-btn" onclick="${clickFn}('${t.name}', event)">
+                    <span>${t.emoji} ${t.name}</span>
+                    <span class="count">${count}题</span>
+                </button>`;
+            });
+            classicalContainer.innerHTML = cHtml;
+
+            const modernContainer = document.getElementById(modernId);
+            let mHtml = '';
+            modernTypes.forEach(t => {
+                const count = typeCounts[t.name] || 0;
+                mHtml += `<button class="type-btn modern-btn" onclick="${clickFn}('${t.name}', event)" style="font-weight:700;">
+                    <span>${t.emoji} ${t.name}</span>
+                    <span class="count">${count}题</span>
+                </button>`;
+            });
+            modernContainer.innerHTML = mHtml;
+        }
+
+        renderSyllabusButtons('random-classical-btns', 'random-modern-btns', 'randomDraw');
+        renderSyllabusButtons('browse-classical-btns', 'browse-modern-btns', 'startBrowse');
+        renderSyllabusButtons('list-classical-btns', 'list-modern-btns', 'showListView');
+
+        // 生成年份按钮 (2005 - 2025)
+        function makeYearButtons() {
+            const container = document.getElementById('year-btns');
+            const years = Array.from(new Set(allQ.map(q => q.year_num))).sort((a,b) => b - a);
+            let html = '';
+            years.forEach(y => {
+                const count = allQ.filter(q => q.year_num === y).length;
+                html += `<button class="year-btn" onclick="startYearPractice(${y}, event)">
+                    ${y}年 (${count}题)
+                </button>`;
+            });
+            container.innerHTML = html;
+        }
+        makeYearButtons();
+
+        // ======== 状态管理 ========
+        let currentMode = 'random';
+        let currentList = [];
+        let currentIndex = 0;
+        let currentQuestion = null;
+
+        function switchTab(event, tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.getElementById('panel-' + tabId).classList.add('active');
+            currentMode = tabId;
+
+            const singleCard = document.getElementById('single-card');
+            const navBar = document.getElementById('nav-bar');
+            const listView = document.getElementById('list-view');
+
+            if (tabId === 'list') {
+                singleCard.style.display = 'none';
+                navBar.style.display = 'none';
+                listView.style.display = 'flex';
+                listView.innerHTML = '<div class="placeholder"><div style="font-size:3rem;margin-bottom:12px;">📋</div>请在上方点击考点大类，整屏平铺通览所有题目</div>';
+            } else if (tabId === 'wrong') {
+                updateWrongBadges();
+                const set = getWrongSet();
+                if (set.size === 0) {
+                    singleCard.style.display = 'none';
+                    navBar.style.display = 'none';
+                    listView.style.display = 'none';
+                } else {
+                    // 默认直接展示整屏平铺
+                    showWrongListView();
+                }
+            } else {
+                singleCard.style.display = 'flex';
+                listView.style.display = 'none';
+                if (currentList.length === 0 || tabId === 'random') {
+                    navBar.style.display = 'none';
+                }
+            }
+        }
+
+        // ======== 显示单个题目 ========
+        function renderQuestion(q) {
+            currentQuestion = q;
+            const cardHeader = document.getElementById('card-header');
+            const imgContainer = document.getElementById('img-container');
+            const img = document.getElementById('q-img');
+            const yearTag = document.getElementById('q-year-tag');
+            const infoTag = document.getElementById('q-info-tag');
+            const typeTag = document.getElementById('q-type-tag');
+            const placeholder = document.getElementById('q-placeholder');
+
+            img.src = q.url + '?v=' + CACHE_VERSION;
+            yearTag.innerHTML = `📅 ${q.year}真题`;
+            infoTag.textContent = q.q_num;
+            
+            const isModern = q.type === '现代控制理论';
+            typeTag.textContent = (isModern ? '🚀 ' : '') + q.type;
+            if (isModern) {
+                typeTag.classList.add('modern-tag');
+            } else {
+                typeTag.classList.remove('modern-tag');
+            }
+
+            // 更新错题按钮状态
+            updateCardWrongButton(isWrong(q.id));
+
+            placeholder.style.display = 'none';
+            cardHeader.style.display = 'flex';
+            imgContainer.style.display = 'block';
+
+            imgContainer.classList.remove('fade-in');
+            void imgContainer.offsetWidth;
+            imgContainer.classList.add('fade-in');
+        }
+
+        // ======== 随机抽题 ========
+        function randomDraw(type, event) {
+            if (event) {
+                document.querySelectorAll('#panel-random .type-btn').forEach(b => b.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            }
+            let pool = type === 'all' ? allQ : allQ.filter(q => q.type === type);
+            if (pool.length === 0) { alert('该大纲分类中暂无题目'); return; }
+            const q = pool[Math.floor(Math.random() * pool.length)];
+            renderQuestion(q);
+            document.getElementById('nav-bar').style.display = 'none';
+        }
+
+        // ======== 专项顺序刷题 ========
+        function startBrowse(type, event) {
+            if (event) {
+                document.querySelectorAll('#panel-browse .type-btn').forEach(b => b.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            }
+            currentList = allQ.filter(q => q.type === type).sort((a,b) => a.year_num - b.year_num);
+            currentIndex = 0;
+            if (currentList.length === 0) { alert('该大类暂无题目'); return; }
+            renderQuestion(currentList[currentIndex]);
+            updateNavBar();
+            document.getElementById('nav-bar').style.display = 'flex';
+        }
+
+        // ======== 年份整卷刷题 ========
+        function startYearPractice(year, event) {
+            if (event) {
+                document.querySelectorAll('#year-btns .year-btn').forEach(b => b.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            }
+            currentList = allQ.filter(q => q.year_num === year).sort((a,b) => a.id - b.id);
+            currentIndex = 0;
+            if (currentList.length === 0) { alert('该年份暂无题目'); return; }
+            renderQuestion(currentList[currentIndex]);
+            updateNavBar();
+            document.getElementById('nav-bar').style.display = 'flex';
+        }
+
+        // ======== 错题本：逐题重做 ========
+        function startWrongPractice(event) {
+            const set = getWrongSet();
+            const wrongList = allQ.filter(q => set.has(q.id)).sort((a,b) => a.year_num - b.year_num);
+            if (wrongList.length === 0) {
+                alert('错题本为空，请先在题目中点击【标为错题】收录');
+                return;
+            }
+            currentList = wrongList;
+            currentIndex = 0;
+            document.getElementById('list-view').style.display = 'none';
+            document.getElementById('single-card').style.display = 'flex';
+            renderQuestion(currentList[currentIndex]);
+            updateNavBar();
+            document.getElementById('nav-bar').style.display = 'flex';
+        }
+
+        // ======== 错题本：整屏平铺通览 ========
+        function showWrongListView(event) {
+            const set = getWrongSet();
+            const list = allQ.filter(q => set.has(q.id)).sort((a,b) => a.year_num - b.year_num);
+            const container = document.getElementById('list-view');
+            const singleCard = document.getElementById('single-card');
+            const navBar = document.getElementById('nav-bar');
+
+            singleCard.style.display = 'none';
+            navBar.style.display = 'none';
+            container.style.display = 'flex';
+
+            if (list.length === 0) {
+                container.innerHTML = '<div class="placeholder">目前暂无错题记录</div>';
+                return;
+            }
+
+            let html = `<div style="text-align:center;color:#718096;font-size:0.92rem;margin-bottom:10px;">
+                📕 我的错题本 · 共收录 <b>${list.length}</b> 道重点真题（按年份由远及近排序）
+            </div>`;
+
+            list.forEach((q, idx) => {
+                const isModern = q.type === '现代控制理论';
+                html += `
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                            <span class="year-tag">📅 ${q.year}真题</span>
+                            <span class="info-tag">${q.q_num}</span>
+                            <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
+                        </div>
+                        <button class="wrong-toggle-btn active list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
+                            ★ 已收录
+                        </button>
+                    </div>
+                    <div class="img-container" style="display:block;">
+                        <img src="${q.url}?v=${CACHE_VERSION}" alt="${q.year} ${q.q_num}" loading="lazy" onclick="openZoom(this.src)">
+                    </div>
+                </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function navPrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion(currentList[currentIndex]);
+                updateNavBar();
+            }
+        }
+
+        function navNext() {
+            if (currentIndex < currentList.length - 1) {
+                currentIndex++;
+                renderQuestion(currentList[currentIndex]);
+                updateNavBar();
+            }
+        }
+
+        function updateNavBar() {
+            document.getElementById('nav-info').textContent =
+                `第 ${currentIndex + 1} / ${currentList.length} 题`;
+        }
+
+        // ======== 专项汇总平铺 ========
+        function showListView(type, event) {
+            if (event) {
+                document.querySelectorAll('#panel-list .type-btn').forEach(b => b.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            }
+            const list = allQ.filter(q => q.type === type).sort((a,b) => a.year_num - b.year_num);
+            const container = document.getElementById('list-view');
+            
+            if (list.length === 0) {
+                container.innerHTML = '<div class="placeholder">该大类下暂无题目</div>';
+                return;
+            }
+
+            let html = `<div style="text-align:center;color:#718096;font-size:0.92rem;margin-bottom:10px;">
+                大纲考点：<b>${type}</b> · 共 <b>${list.length}</b> 道真题大题（按年份从2005到2025排序）
+            </div>`;
+
+            list.forEach((q, idx) => {
+                const isModern = q.type === '现代控制理论';
+                const marked = isWrong(q.id);
+                html += `
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                            <span class="year-tag">📅 ${q.year}真题</span>
+                            <span class="info-tag">${q.q_num} (编号 #${idx+1})</span>
+                            <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
+                        </div>
+                        <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
+                            ${marked ? '★ 已收录' : '☆ 标为错题'}
+                        </button>
+                    </div>
+                    <div class="img-container" style="display:block;">
+                        <img src="${q.url}?v=${CACHE_VERSION}" alt="${q.year} ${q.q_num}" loading="lazy" onclick="openZoom(this.src)">
+                    </div>
+                </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ======== 放大查看功能 ========
+        function openZoom(src) {
+            const modal = document.getElementById('img-modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = src;
+            modal.style.display = 'flex';
+        }
+
+        function closeZoom() {
+            document.getElementById('img-modal').style.display = 'none';
+        }
+
+        // ======== 键盘快捷键支持 (⬅️ ➡️ 与 W 键标记错题) ========
+        window.addEventListener('keydown', e => {
+            if (document.getElementById('img-modal').style.display === 'flex') {
+                if (e.key === 'Escape') closeZoom();
+                return;
+            }
+            if (e.key === 'w' || e.key === 'W') {
+                toggleCurrentWrong();
+                return;
+            }
+            if (document.getElementById('nav-bar').style.display === 'flex') {
+                if (e.key === 'ArrowLeft') navPrev();
+                if (e.key === 'ArrowRight') navNext();
+            }
+        });
+
+        // 初始化错题微标统计
+        updateWrongBadges();
+    </script>
+</body>
+</html>
