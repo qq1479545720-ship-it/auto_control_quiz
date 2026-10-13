@@ -6,7 +6,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_01.png"
+        "url": "question_images/q_2005_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 19,
@@ -15,7 +16,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_03.png"
+        "url": "question_images/q_2005_03.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 20,
@@ -24,7 +26,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_04.png"
+        "url": "question_images/q_2005_04.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 29,
@@ -33,7 +36,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_01.png"
+        "url": "question_images/q_2006_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 30,
@@ -42,7 +46,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_02.png"
+        "url": "question_images/q_2006_02.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 43,
@@ -51,7 +56,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2007_01.png"
+        "url": "question_images/q_2007_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 52,
@@ -60,7 +66,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2008_01.png"
+        "url": "question_images/q_2008_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 61,
@@ -69,7 +76,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2009_01.png"
+        "url": "question_images/q_2009_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 70,
@@ -78,7 +86,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2010_01.png"
+        "url": "question_images/q_2010_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 79,
@@ -87,7 +96,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2011_01.png"
+        "url": "question_images/q_2011_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 88,
@@ -96,7 +106,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_01.png"
+        "url": "question_images/q_2012_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 98,
@@ -105,7 +116,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2013_01.png"
+        "url": "question_images/q_2013_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 107,
@@ -114,7 +126,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2014_01.png"
+        "url": "question_images/q_2014_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 109,
@@ -123,7 +136,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2014_03.png"
+        "url": "question_images/q_2014_03.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 116,
@@ -132,7 +146,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2015_01.png"
+        "url": "question_images/q_2015_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 125,
@@ -141,7 +156,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2016_01.png"
+        "url": "question_images/q_2016_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 134,
@@ -150,7 +166,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2017_01.png"
+        "url": "question_images/q_2017_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 143,
@@ -159,7 +176,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2018_01.png"
+        "url": "question_images/q_2018_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 152,
@@ -168,7 +186,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2019_01.png"
+        "url": "question_images/q_2019_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 153,
@@ -177,7 +196,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2019_02.png"
+        "url": "question_images/q_2019_02.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 161,
@@ -186,7 +206,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2020_01.png"
+        "url": "question_images/q_2020_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 170,
@@ -195,7 +216,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2021_01.png"
+        "url": "question_images/q_2021_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 8,
@@ -204,7 +226,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2022_01.png"
+        "url": "question_images/q_2022_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 179,
@@ -213,7 +236,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2023_01.png"
+        "url": "question_images/q_2023_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 188,
@@ -222,7 +246,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2024_01.png"
+        "url": "question_images/q_2024_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 189,
@@ -231,7 +256,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2024_02.png"
+        "url": "question_images/q_2024_02.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 1,
@@ -240,7 +266,8 @@ const classifiedImages = [
         "q_num": "第1题",
         "type": "控制系统的数学模型",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2025_01.png"
+        "url": "question_images/q_2025_01.png",
+        "sub_type": "结构图化简与系统建模"
     },
     {
         "id": 21,
@@ -249,7 +276,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_05.png"
+        "url": "question_images/q_2005_05.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 22,
@@ -258,7 +286,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_06.png"
+        "url": "question_images/q_2005_06.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 31,
@@ -267,7 +296,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_03.png"
+        "url": "question_images/q_2006_03.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 32,
@@ -276,7 +306,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_04.png"
+        "url": "question_images/q_2006_04.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 35,
@@ -285,7 +316,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_07.png"
+        "url": "question_images/q_2006_07.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 44,
@@ -294,7 +326,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2007_02.png"
+        "url": "question_images/q_2007_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 53,
@@ -303,7 +336,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2008_02.png"
+        "url": "question_images/q_2008_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 62,
@@ -312,7 +346,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2009_02.png"
+        "url": "question_images/q_2009_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 71,
@@ -321,7 +356,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2010_02.png"
+        "url": "question_images/q_2010_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 80,
@@ -330,7 +366,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2011_02.png"
+        "url": "question_images/q_2011_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 89,
@@ -339,7 +376,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_02.png"
+        "url": "question_images/q_2012_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 90,
@@ -348,7 +386,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_03.png"
+        "url": "question_images/q_2012_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 94,
@@ -357,7 +396,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_07.png"
+        "url": "question_images/q_2012_07.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 99,
@@ -366,7 +406,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2013_02.png"
+        "url": "question_images/q_2013_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 100,
@@ -375,7 +416,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2013_03.png"
+        "url": "question_images/q_2013_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 108,
@@ -384,7 +426,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2014_02.png"
+        "url": "question_images/q_2014_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 117,
@@ -393,7 +436,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2015_02.png"
+        "url": "question_images/q_2015_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 118,
@@ -402,7 +446,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2015_03.png"
+        "url": "question_images/q_2015_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 126,
@@ -411,7 +456,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2016_02.png"
+        "url": "question_images/q_2016_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 127,
@@ -420,7 +466,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2016_03.png"
+        "url": "question_images/q_2016_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 135,
@@ -429,7 +476,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2017_02.png"
+        "url": "question_images/q_2017_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 136,
@@ -438,7 +486,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2017_03.png"
+        "url": "question_images/q_2017_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 144,
@@ -447,7 +496,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2018_02.png"
+        "url": "question_images/q_2018_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 145,
@@ -456,7 +506,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2018_03.png"
+        "url": "question_images/q_2018_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 154,
@@ -465,7 +516,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2019_03.png"
+        "url": "question_images/q_2019_03.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 162,
@@ -474,7 +526,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2020_02.png"
+        "url": "question_images/q_2020_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 163,
@@ -483,7 +536,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2020_03.png"
+        "url": "question_images/q_2020_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 171,
@@ -492,7 +546,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2021_02.png"
+        "url": "question_images/q_2021_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 172,
@@ -501,7 +556,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2021_03.png"
+        "url": "question_images/q_2021_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 9,
@@ -510,7 +566,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2022_02.png"
+        "url": "question_images/q_2022_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 10,
@@ -519,7 +576,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2022_03.png"
+        "url": "question_images/q_2022_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 180,
@@ -528,7 +586,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2023_02.png"
+        "url": "question_images/q_2023_02.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 181,
@@ -537,7 +596,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2023_03.png"
+        "url": "question_images/q_2023_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 190,
@@ -546,7 +606,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2024_03.png"
+        "url": "question_images/q_2024_03.png",
+        "sub_type": "时域二阶动态性能"
     },
     {
         "id": 23,
@@ -555,7 +616,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_07.png"
+        "url": "question_images/q_2005_07.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 33,
@@ -564,7 +626,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_05.png"
+        "url": "question_images/q_2006_05.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 34,
@@ -573,7 +636,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_06.png"
+        "url": "question_images/q_2006_06.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 45,
@@ -582,7 +646,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2007_03.png"
+        "url": "question_images/q_2007_03.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 54,
@@ -591,7 +656,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2008_03.png"
+        "url": "question_images/q_2008_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 55,
@@ -600,7 +666,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2008_04.png"
+        "url": "question_images/q_2008_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 63,
@@ -609,7 +676,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "时域分析法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2009_03.png"
+        "url": "question_images/q_2009_03.png",
+        "sub_type": "稳态误差与劳斯判据"
     },
     {
         "id": 64,
@@ -618,7 +686,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2009_04.png"
+        "url": "question_images/q_2009_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 72,
@@ -627,7 +696,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2010_03.png"
+        "url": "question_images/q_2010_03.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 73,
@@ -636,7 +706,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2010_04.png"
+        "url": "question_images/q_2010_04.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 81,
@@ -645,7 +716,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2011_03.png"
+        "url": "question_images/q_2011_03.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 82,
@@ -654,7 +726,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2011_04.png"
+        "url": "question_images/q_2011_04.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 91,
@@ -663,7 +736,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_04.png"
+        "url": "question_images/q_2012_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 101,
@@ -672,7 +746,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2013_04.png"
+        "url": "question_images/q_2013_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 110,
@@ -681,7 +756,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2014_04.png"
+        "url": "question_images/q_2014_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 119,
@@ -690,7 +766,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2015_04.png"
+        "url": "question_images/q_2015_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 128,
@@ -699,7 +776,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2016_04.png"
+        "url": "question_images/q_2016_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 137,
@@ -708,7 +786,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2017_04.png"
+        "url": "question_images/q_2017_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 146,
@@ -717,7 +796,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2018_04.png"
+        "url": "question_images/q_2018_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 155,
@@ -726,7 +806,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2019_04.png"
+        "url": "question_images/q_2019_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 164,
@@ -735,7 +816,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2020_04.png"
+        "url": "question_images/q_2020_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 173,
@@ -744,7 +826,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2021_04.png"
+        "url": "question_images/q_2021_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 11,
@@ -753,7 +836,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2022_04.png"
+        "url": "question_images/q_2022_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 182,
@@ -762,7 +846,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2023_04.png"
+        "url": "question_images/q_2023_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 191,
@@ -771,7 +856,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2024_04.png"
+        "url": "question_images/q_2024_04.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 2,
@@ -780,7 +866,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "根轨迹法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2025_02.png"
+        "url": "question_images/q_2025_02.png",
+        "sub_type": "根轨迹绘制与性能分析"
     },
     {
         "id": 18,
@@ -789,7 +876,8 @@ const classifiedImages = [
         "q_num": "第2题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2005_02.png"
+        "url": "question_images/q_2005_02.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 26,
@@ -798,7 +886,8 @@ const classifiedImages = [
         "q_num": "第10题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2005_10.png"
+        "url": "question_images/q_2005_10.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 28,
@@ -807,7 +896,8 @@ const classifiedImages = [
         "q_num": "第12题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2005_12.png"
+        "url": "question_images/q_2005_12.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 39,
@@ -816,7 +906,8 @@ const classifiedImages = [
         "q_num": "第11题",
         "type": "非线性控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_11.png"
+        "url": "question_images/q_2006_11.png",
+        "sub_type": "非线性控制相平面法"
     },
     {
         "id": 41,
@@ -825,7 +916,8 @@ const classifiedImages = [
         "q_num": "第13题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2006_13.png"
+        "url": "question_images/q_2006_13.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 42,
@@ -834,7 +926,8 @@ const classifiedImages = [
         "q_num": "第14题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2006_14.png"
+        "url": "question_images/q_2006_14.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 50,
@@ -843,7 +936,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2007_08.png"
+        "url": "question_images/q_2007_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 51,
@@ -852,7 +946,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2007_09.png"
+        "url": "question_images/q_2007_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 59,
@@ -861,7 +956,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2008_08.png"
+        "url": "question_images/q_2008_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 60,
@@ -870,7 +966,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2008_09.png"
+        "url": "question_images/q_2008_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 68,
@@ -879,7 +976,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2009_08.png"
+        "url": "question_images/q_2009_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 69,
@@ -888,7 +986,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2009_09.png"
+        "url": "question_images/q_2009_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 77,
@@ -897,7 +996,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2010_08.png"
+        "url": "question_images/q_2010_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 78,
@@ -906,7 +1006,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2010_09.png"
+        "url": "question_images/q_2010_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 86,
@@ -915,7 +1016,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2011_08.png"
+        "url": "question_images/q_2011_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 87,
@@ -924,7 +1026,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2011_09.png"
+        "url": "question_images/q_2011_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 96,
@@ -933,7 +1036,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2012_09.png"
+        "url": "question_images/q_2012_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 97,
@@ -942,7 +1046,8 @@ const classifiedImages = [
         "q_num": "第10题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2012_10.png"
+        "url": "question_images/q_2012_10.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 105,
@@ -951,7 +1056,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2013_08.png"
+        "url": "question_images/q_2013_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 106,
@@ -960,7 +1066,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2013_09.png"
+        "url": "question_images/q_2013_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 114,
@@ -969,7 +1076,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2014_08.png"
+        "url": "question_images/q_2014_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 115,
@@ -978,7 +1086,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2014_09.png"
+        "url": "question_images/q_2014_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 123,
@@ -987,7 +1096,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2015_08.png"
+        "url": "question_images/q_2015_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 124,
@@ -996,7 +1106,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2015_09.png"
+        "url": "question_images/q_2015_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 132,
@@ -1005,7 +1116,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2016_08.png"
+        "url": "question_images/q_2016_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 133,
@@ -1014,7 +1126,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2016_09.png"
+        "url": "question_images/q_2016_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 141,
@@ -1023,7 +1136,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2017_08.png"
+        "url": "question_images/q_2017_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 142,
@@ -1032,7 +1146,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2017_09.png"
+        "url": "question_images/q_2017_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 150,
@@ -1041,7 +1156,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2018_08.png"
+        "url": "question_images/q_2018_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 151,
@@ -1050,7 +1166,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2018_09.png"
+        "url": "question_images/q_2018_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 159,
@@ -1059,7 +1176,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2019_08.png"
+        "url": "question_images/q_2019_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 160,
@@ -1068,7 +1186,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2019_09.png"
+        "url": "question_images/q_2019_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 168,
@@ -1077,7 +1196,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2020_08.png"
+        "url": "question_images/q_2020_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 169,
@@ -1086,7 +1206,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2020_09.png"
+        "url": "question_images/q_2020_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 177,
@@ -1095,7 +1216,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2021_08.png"
+        "url": "question_images/q_2021_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 178,
@@ -1104,7 +1226,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2021_09.png"
+        "url": "question_images/q_2021_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 15,
@@ -1113,7 +1236,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2022_08.png"
+        "url": "question_images/q_2022_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 16,
@@ -1122,7 +1246,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2022_09.png"
+        "url": "question_images/q_2022_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 186,
@@ -1131,7 +1256,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2023_08.png"
+        "url": "question_images/q_2023_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 187,
@@ -1140,7 +1266,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2023_09.png"
+        "url": "question_images/q_2023_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 195,
@@ -1149,7 +1276,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2024_08.png"
+        "url": "question_images/q_2024_08.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 196,
@@ -1158,7 +1286,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2024_09.png"
+        "url": "question_images/q_2024_09.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 6,
@@ -1167,7 +1296,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2025_06.png"
+        "url": "question_images/q_2025_06.png",
+        "sub_type": "状态空间与能控能观"
     },
     {
         "id": 7,
@@ -1176,7 +1306,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2025_07.png"
+        "url": "question_images/q_2025_07.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 40,
@@ -1185,7 +1316,8 @@ const classifiedImages = [
         "q_num": "第12题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_12.png"
+        "url": "question_images/q_2006_12.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 49,
@@ -1194,7 +1326,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2007_07.png"
+        "url": "question_images/q_2007_07.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 58,
@@ -1203,7 +1336,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2008_07.png"
+        "url": "question_images/q_2008_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 67,
@@ -1212,7 +1346,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2009_07.png"
+        "url": "question_images/q_2009_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 76,
@@ -1221,7 +1356,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2010_07.png"
+        "url": "question_images/q_2010_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 85,
@@ -1230,7 +1366,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2011_07.png"
+        "url": "question_images/q_2011_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 95,
@@ -1239,7 +1376,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_08.png"
+        "url": "question_images/q_2012_08.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 104,
@@ -1248,7 +1386,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2013_07.png"
+        "url": "question_images/q_2013_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 113,
@@ -1257,7 +1396,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2014_07.png"
+        "url": "question_images/q_2014_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 122,
@@ -1266,7 +1406,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2015_07.png"
+        "url": "question_images/q_2015_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 131,
@@ -1275,7 +1416,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2016_07.png"
+        "url": "question_images/q_2016_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 140,
@@ -1284,7 +1426,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2017_07.png"
+        "url": "question_images/q_2017_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 149,
@@ -1293,7 +1436,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2018_07.png"
+        "url": "question_images/q_2018_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 158,
@@ -1302,7 +1446,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2019_07.png"
+        "url": "question_images/q_2019_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 167,
@@ -1311,7 +1456,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2020_07.png"
+        "url": "question_images/q_2020_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 176,
@@ -1320,7 +1466,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2021_07.png"
+        "url": "question_images/q_2021_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 14,
@@ -1329,7 +1476,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2022_07.png"
+        "url": "question_images/q_2022_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 185,
@@ -1338,7 +1486,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2023_07.png"
+        "url": "question_images/q_2023_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 194,
@@ -1347,7 +1496,8 @@ const classifiedImages = [
         "q_num": "第7题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2024_07.png"
+        "url": "question_images/q_2024_07.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 5,
@@ -1356,7 +1506,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2025_05.png"
+        "url": "question_images/q_2025_05.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 24,
@@ -1365,7 +1516,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_08.png"
+        "url": "question_images/q_2005_08.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 25,
@@ -1374,7 +1526,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2005_09.png"
+        "url": "question_images/q_2005_09.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 27,
@@ -1383,7 +1536,8 @@ const classifiedImages = [
         "q_num": "第11题",
         "type": "现代控制理论",
         "major_cat": "现代控制理论",
-        "url": "question_images/q_2005_11.png"
+        "url": "question_images/q_2005_11.png",
+        "sub_type": "状态反馈与极点配置"
     },
     {
         "id": 36,
@@ -1392,7 +1546,8 @@ const classifiedImages = [
         "q_num": "第8题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_08.png"
+        "url": "question_images/q_2006_08.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 37,
@@ -1401,7 +1556,8 @@ const classifiedImages = [
         "q_num": "第9题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_09.png"
+        "url": "question_images/q_2006_09.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 38,
@@ -1410,7 +1566,8 @@ const classifiedImages = [
         "q_num": "第10题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2006_10.png"
+        "url": "question_images/q_2006_10.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 46,
@@ -1419,7 +1576,8 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2007_04.png"
+        "url": "question_images/q_2007_04.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 47,
@@ -1428,7 +1586,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2007_05.png"
+        "url": "question_images/q_2007_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 48,
@@ -1437,7 +1596,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "离散控制系统",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2007_06.png"
+        "url": "question_images/q_2007_06.png",
+        "sub_type": "离散采样与脉冲传递"
     },
     {
         "id": 56,
@@ -1446,7 +1606,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2008_05.png"
+        "url": "question_images/q_2008_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 57,
@@ -1455,7 +1616,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2008_06.png"
+        "url": "question_images/q_2008_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 65,
@@ -1464,7 +1626,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2009_05.png"
+        "url": "question_images/q_2009_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 66,
@@ -1473,7 +1636,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2009_06.png"
+        "url": "question_images/q_2009_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 74,
@@ -1482,7 +1646,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2010_05.png"
+        "url": "question_images/q_2010_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 75,
@@ -1491,7 +1656,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2010_06.png"
+        "url": "question_images/q_2010_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 83,
@@ -1500,7 +1666,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2011_05.png"
+        "url": "question_images/q_2011_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 84,
@@ -1509,7 +1676,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2011_06.png"
+        "url": "question_images/q_2011_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 92,
@@ -1518,7 +1686,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_05.png"
+        "url": "question_images/q_2012_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 93,
@@ -1527,7 +1696,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2012_06.png"
+        "url": "question_images/q_2012_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 102,
@@ -1536,7 +1706,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2013_05.png"
+        "url": "question_images/q_2013_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 103,
@@ -1545,7 +1716,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2013_06.png"
+        "url": "question_images/q_2013_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 111,
@@ -1554,7 +1726,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2014_05.png"
+        "url": "question_images/q_2014_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 112,
@@ -1563,7 +1736,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2014_06.png"
+        "url": "question_images/q_2014_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 120,
@@ -1572,7 +1746,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2015_05.png"
+        "url": "question_images/q_2015_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 121,
@@ -1581,7 +1756,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2015_06.png"
+        "url": "question_images/q_2015_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 129,
@@ -1590,7 +1766,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2016_05.png"
+        "url": "question_images/q_2016_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 130,
@@ -1599,7 +1776,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2016_06.png"
+        "url": "question_images/q_2016_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 138,
@@ -1608,7 +1786,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2017_05.png"
+        "url": "question_images/q_2017_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 139,
@@ -1617,7 +1796,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2017_06.png"
+        "url": "question_images/q_2017_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 147,
@@ -1626,7 +1806,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2018_05.png"
+        "url": "question_images/q_2018_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 148,
@@ -1635,7 +1816,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2018_06.png"
+        "url": "question_images/q_2018_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 156,
@@ -1644,7 +1826,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2019_05.png"
+        "url": "question_images/q_2019_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 157,
@@ -1653,7 +1836,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2019_06.png"
+        "url": "question_images/q_2019_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 165,
@@ -1662,7 +1846,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2020_05.png"
+        "url": "question_images/q_2020_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 166,
@@ -1671,7 +1856,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2020_06.png"
+        "url": "question_images/q_2020_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 174,
@@ -1680,7 +1866,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2021_05.png"
+        "url": "question_images/q_2021_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 175,
@@ -1689,7 +1876,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2021_06.png"
+        "url": "question_images/q_2021_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 12,
@@ -1698,7 +1886,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2022_05.png"
+        "url": "question_images/q_2022_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 13,
@@ -1707,7 +1896,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2022_06.png"
+        "url": "question_images/q_2022_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 183,
@@ -1716,7 +1906,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2023_05.png"
+        "url": "question_images/q_2023_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 184,
@@ -1725,7 +1916,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2023_06.png"
+        "url": "question_images/q_2023_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 192,
@@ -1734,7 +1926,8 @@ const classifiedImages = [
         "q_num": "第5题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2024_05.png"
+        "url": "question_images/q_2024_05.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 193,
@@ -1743,7 +1936,8 @@ const classifiedImages = [
         "q_num": "第6题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2024_06.png"
+        "url": "question_images/q_2024_06.png",
+        "sub_type": "频域串联校正设计"
     },
     {
         "id": 3,
@@ -1752,7 +1946,8 @@ const classifiedImages = [
         "q_num": "第3题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2025_03.png"
+        "url": "question_images/q_2025_03.png",
+        "sub_type": "Bode/Nyquist频域特性"
     },
     {
         "id": 4,
@@ -1761,6 +1956,7 @@ const classifiedImages = [
         "q_num": "第4题",
         "type": "频率响应法",
         "major_cat": "经典控制理论",
-        "url": "question_images/q_2025_04.png"
+        "url": "question_images/q_2025_04.png",
+        "sub_type": "频域串联校正设计"
     }
 ];

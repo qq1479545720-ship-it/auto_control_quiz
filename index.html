@@ -118,6 +118,12 @@
         .type-btn.modern-btn:hover { background-color: #f3e8ff; }
         .type-btn.modern-btn.active { background-color: #805ad5; color: white; border-color: #805ad5; }
         
+        .type-btn.sub-btn { background-color: #f0fff4; border: 1px solid #c6f6d5; color: #22543d; font-size: 0.84rem; padding: 7px 11px; }
+        .type-btn.sub-btn:hover { background-color: #e6fffa; }
+        .type-btn.sub-btn.active { background-color: #38a169; color: white; border-color: #38a169; }
+        .type-btn.sub-btn .count { background: rgba(56, 161, 105, 0.15); color: #22543d; }
+        .type-btn.sub-btn.active .count { background: rgba(255,255,255,0.25); color: white; }
+        
         .type-btn .count { 
             font-size: 0.76rem; 
             background: rgba(0,0,0,0.06); 
@@ -207,6 +213,15 @@
         .type-tag.modern-tag {
             background-color: #faf5ff;
             color: #6b46c1;
+        }
+        .sub-tag {
+            background-color: #f0fff4;
+            color: #276749;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid #c6f6d5;
         }
         .format-tag {
             background-color: #fefcbf;
@@ -414,14 +429,18 @@
 
         <!-- 面板2：专项刷题 -->
         <div id="panel-browse" class="panel">
-            <p class="panel-desc">按大纲知识点考点集中突破，一道接一道顺序专项训练</p>
+            <p class="panel-desc">按考研大纲一级或二级核心考点突破，一道接一道顺序专项训练</p>
             <div class="syllabus-section">
                 <div class="syllabus-title">① 经典控制理论考点</div>
                 <div class="type-buttons" id="browse-classical-btns"></div>
             </div>
-            <div class="syllabus-section" style="margin-bottom: 0;">
+            <div class="syllabus-section">
                 <div class="syllabus-title modern">② 现代控制理论大类</div>
                 <div class="type-buttons" id="browse-modern-btns"></div>
+            </div>
+            <div class="syllabus-section" style="margin-bottom: 0;">
+                <div class="syllabus-title" style="color: #276749;">🎯 细分二级核心考点专题</div>
+                <div class="type-buttons" id="browse-sub-btns"></div>
             </div>
         </div>
 
@@ -433,14 +452,18 @@
 
         <!-- 面板4：专项汇总平铺 -->
         <div id="panel-list" class="panel">
-            <p class="panel-desc">选择知识点考点类目，在下方整屏平铺展开所有对应真题进行通览复习</p>
+            <p class="panel-desc">选择考点类目，在下方整屏平铺展开所有对应真题进行通览复习</p>
             <div class="syllabus-section">
                 <div class="syllabus-title">① 经典控制理论考点</div>
                 <div class="type-buttons" id="list-classical-btns"></div>
             </div>
-            <div class="syllabus-section" style="margin-bottom: 0;">
+            <div class="syllabus-section">
                 <div class="syllabus-title modern">② 现代控制理论大类</div>
                 <div class="type-buttons" id="list-modern-btns"></div>
+            </div>
+            <div class="syllabus-section" style="margin-bottom: 0;">
+                <div class="syllabus-title" style="color: #276749;">🎯 细分二级核心考点专题</div>
+                <div class="type-buttons" id="list-sub-btns"></div>
             </div>
         </div>
 
@@ -472,6 +495,7 @@
                     <span id="q-year-tag" class="year-tag">2024年真题</span>
                     <span id="q-info-tag" class="info-tag">第 1 题</span>
                     <span id="q-type-tag" class="type-tag">📈 根轨迹法</span>
+                    <span id="q-sub-tag" class="sub-tag">根轨迹绘制与性能分析</span>
                 </div>
                 <button id="q-wrong-btn" class="wrong-toggle-btn" onclick="toggleCurrentWrong(event)">
                     <span id="q-wrong-icon">☆</span>
@@ -631,13 +655,17 @@
             }
         }
 
-        // 统计知识点分布
+        // 统计一级与二级知识点分布
         const typeCounts = {};
+        const subCounts = {};
         allQ.forEach(q => { 
             typeCounts[q.type] = (typeCounts[q.type] || 0) + 1; 
+            if (q.sub_type) {
+                subCounts[q.sub_type] = (subCounts[q.sub_type] || 0) + 1;
+            }
         });
 
-        // 严格遵循考研官方大纲分类配置（6类经典 + 1类现代）
+        // 严格遵循考研官方大纲一级分类（6类经典 + 1类现代）
         const classicalTypes = [
             { name: '控制系统的数学模型', emoji: '🔧', desc: '传递函数/方框图/信号流图/梅逊公式' },
             { name: '时域分析法', emoji: '⏱️', desc: '性能指标/稳态误差/劳斯判据' },
@@ -651,14 +679,28 @@
             { name: '现代控制理论', emoji: '🚀', desc: '状态空间/运动分析/能控能观/李雅普诺夫/极点配置/观测器' }
         ];
 
+        // 细分二级核心考点配置
+        const subTypes = [
+            { name: '结构图化简与系统建模', emoji: '🧱' },
+            { name: '时域二阶动态性能', emoji: '⏱️' },
+            { name: '稳态误差与劳斯判据', emoji: '🎯' },
+            { name: '根轨迹绘制与性能分析', emoji: '📈' },
+            { name: 'Bode/Nyquist频域特性', emoji: '📊' },
+            { name: '频域串联校正设计', emoji: '🎛️' },
+            { name: '离散采样与脉冲传递', emoji: '💻' },
+            { name: '状态空间与能控能观', emoji: '🔍' },
+            { name: '状态反馈与极点配置', emoji: '🚀' },
+            { name: '非线性控制相平面法', emoji: '🌀' }
+        ];
+
         // 统计行更新
         const classicalTotal = allQ.filter(q => q.major_cat === '经典控制理论').length;
         const modernTotal = allQ.filter(q => q.major_cat === '现代控制理论').length;
         document.getElementById('stats-line').textContent =
             `收录 2005-2025 年共 ${allQ.length} 道大纲高清真题（经典控制 ${classicalTotal} 题 · 现代控制 ${modernTotal} 题）`;
 
-        // 生成大纲分类按钮
-        function renderSyllabusButtons(classicalId, modernId, clickFnName) {
+        // 生成分类按钮
+        function renderSyllabusButtons(classicalId, modernId, subId, clickFnName) {
             const classicalContainer = document.getElementById(classicalId);
             let cHtml = '';
             classicalTypes.forEach(t => {
@@ -680,11 +722,27 @@
                 </button>`;
             });
             modernContainer.innerHTML = mHtml;
+
+            if (subId) {
+                const subContainer = document.getElementById(subId);
+                let sHtml = '';
+                subTypes.forEach(t => {
+                    const count = subCounts[t.name] || 0;
+                    if (count > 0) {
+                        const isSubClickFn = clickFnName === 'startBrowse' ? 'startBrowseSub' : 'showListViewSub';
+                        sHtml += `<button class="type-btn sub-btn" onclick="${isSubClickFn}('${t.name}', event)">
+                            <span>${t.emoji} ${t.name}</span>
+                            <span class="count">${count}题</span>
+                        </button>`;
+                    }
+                });
+                subContainer.innerHTML = sHtml;
+            }
         }
 
-        renderSyllabusButtons('random-classical-btns', 'random-modern-btns', 'randomDraw');
-        renderSyllabusButtons('browse-classical-btns', 'browse-modern-btns', 'startBrowse');
-        renderSyllabusButtons('list-classical-btns', 'list-modern-btns', 'showListView');
+        renderSyllabusButtons('random-classical-btns', 'random-modern-btns', null, 'randomDraw');
+        renderSyllabusButtons('browse-classical-btns', 'browse-modern-btns', 'browse-sub-btns', 'startBrowse');
+        renderSyllabusButtons('list-classical-btns', 'list-modern-btns', 'list-sub-btns', 'showListView');
 
         // 生成年份按钮 (2005 - 2025)
         function makeYearButtons() {
@@ -766,6 +824,16 @@
                 typeTag.classList.remove('modern-tag');
             }
 
+            const subTag = document.getElementById('q-sub-tag');
+            if (subTag) {
+                if (q.sub_type) {
+                    subTag.style.display = 'inline-block';
+                    subTag.textContent = '🎯 ' + q.sub_type;
+                } else {
+                    subTag.style.display = 'none';
+                }
+            }
+
             // 更新错题按钮状态
             updateCardWrongButton(isWrong(q.id));
 
@@ -791,7 +859,7 @@
             document.getElementById('nav-bar').style.display = 'none';
         }
 
-        // ======== 专项顺序刷题 ========
+        // ======== 专项顺序刷题 (一级大纲) ========
         function startBrowse(type, event) {
             if (event) {
                 document.querySelectorAll('#panel-browse .type-btn').forEach(b => b.classList.remove('active'));
@@ -799,7 +867,21 @@
             }
             currentList = allQ.filter(q => q.type === type).sort((a,b) => a.year_num - b.year_num);
             currentIndex = 0;
-            if (currentList.length === 0) { alert('该大类暂无题目'); return; }
+            if (currentList.length === 0) { alert('该分类暂无题目'); return; }
+            renderQuestion(currentList[currentIndex]);
+            updateNavBar();
+            document.getElementById('nav-bar').style.display = 'flex';
+        }
+
+        // ======== 专项顺序刷题 (二级细分考点) ========
+        function startBrowseSub(subType, event) {
+            if (event) {
+                document.querySelectorAll('#panel-browse .type-btn').forEach(b => b.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            }
+            currentList = allQ.filter(q => q.sub_type === subType).sort((a,b) => a.year_num - b.year_num);
+            currentIndex = 0;
+            if (currentList.length === 0) { alert('该二级考点暂无题目'); return; }
             renderQuestion(currentList[currentIndex]);
             updateNavBar();
             document.getElementById('nav-bar').style.display = 'flex';
@@ -865,8 +947,8 @@
                         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                             <span class="year-tag">📅 ${q.year}真题</span>
                             <span class="info-tag">${q.q_num}</span>
-                            <span class="format-tag">${q.q_format || '计算分析大题'}</span>
                             <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
+                            ${q.sub_type ? `<span class="sub-tag">🎯 ${q.sub_type}</span>` : ''}
                         </div>
                         <button class="wrong-toggle-btn active list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
                             ★ 已收录
@@ -902,7 +984,7 @@
                 `第 ${currentIndex + 1} / ${currentList.length} 题`;
         }
 
-        // ======== 专项汇总平铺 ========
+        // ======== 专项汇总平铺 (一级大纲) ========
         function showListView(type, event) {
             if (event) {
                 document.querySelectorAll('#panel-list .type-btn').forEach(b => b.classList.remove('active'));
@@ -912,12 +994,12 @@
             const container = document.getElementById('list-view');
             
             if (list.length === 0) {
-                container.innerHTML = '<div class="placeholder">该大类下暂无题目</div>';
+                container.innerHTML = '<div class="placeholder">该分类下暂无题目</div>';
                 return;
             }
 
             let html = `<div style="text-align:center;color:#718096;font-size:0.92rem;margin-bottom:10px;">
-                大纲考点：<b>${type}</b> · 共 <b>${list.length}</b> 道真题大题（按年份从2005到2025排序）
+                大纲一级考点：<b>${type}</b> · 共 <b>${list.length}</b> 道真题（按年份从2005到2025排序）
             </div>`;
 
             list.forEach((q, idx) => {
@@ -930,6 +1012,50 @@
                             <span class="year-tag">📅 ${q.year}真题</span>
                             <span class="info-tag">${q.q_num}</span>
                             <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
+                            ${q.sub_type ? `<span class="sub-tag">🎯 ${q.sub_type}</span>` : ''}
+                        </div>
+                        <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
+                            ${marked ? '★ 已收录' : '☆ 标为错题'}
+                        </button>
+                    </div>
+                    <div class="img-container" style="display:block;">
+                        <img src="${q.url}?v=${CACHE_VERSION}" alt="${q.year} ${q.q_num}" loading="lazy" onclick="openZoom(this.src)">
+                    </div>
+                </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ======== 专项汇总平铺 (二级细分考点) ========
+        function showListViewSub(subType, event) {
+            if (event) {
+                document.querySelectorAll('#panel-list .type-btn').forEach(b => b.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            }
+            const list = allQ.filter(q => q.sub_type === subType).sort((a,b) => a.year_num - b.year_num);
+            const container = document.getElementById('list-view');
+            
+            if (list.length === 0) {
+                container.innerHTML = '<div class="placeholder">该二级考点下暂无题目</div>';
+                return;
+            }
+
+            let html = `<div style="text-align:center;color:#276749;font-size:0.92rem;margin-bottom:10px;">
+                🎯 细分二级考点：<b>${subType}</b> · 共 <b>${list.length}</b> 道精选真题（按年份从2005到2025排序）
+            </div>`;
+
+            list.forEach((q, idx) => {
+                const isModern = q.type === '现代控制理论';
+                const marked = isWrong(q.id);
+                html += `
+                <div class="list-item">
+                    <div class="list-item-header">
+                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                            <span class="year-tag">📅 ${q.year}真题</span>
+                            <span class="info-tag">${q.q_num}</span>
+                            <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
+                            <span class="sub-tag">🎯 ${q.sub_type}</span>
                         </div>
                         <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
                             ${marked ? '★ 已收录' : '☆ 标为错题'}
