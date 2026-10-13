@@ -6,6 +6,7 @@
     <title>自动控制原理 - 考研大纲分类真题刷题系统</title>
     
     <script src="classified_data.js"></script>
+    <script src="knowledge_guides.js"></script>
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -264,6 +265,120 @@
             background: linear-gradient(135deg, #c05621, #9c4221);
         }
 
+        /* 解题思路折叠按钮与面板样式 */
+        .hint-btn-wrap {
+            margin-top: 14px;
+            display: none;
+            width: 100%;
+        }
+        .hint-toggle-btn {
+            width: 100%;
+            background: #f7fafc;
+            color: #2b6cb0;
+            border: 1px dashed #bee3f8;
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+            user-select: none;
+        }
+        .hint-toggle-btn:hover {
+            background: #ebf8ff;
+            border-color: #63b3ed;
+            color: #2b6cb0;
+        }
+        .hint-toggle-btn.active {
+            background: #ebf8ff;
+            border-style: solid;
+            border-color: #3182ce;
+            color: #2c5282;
+        }
+        .hint-box {
+            display: none;
+            margin-top: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #3182ce;
+            border-radius: 8px;
+            padding: 16px;
+            animation: fadeIn 0.25s ease-in-out;
+        }
+        .hint-box.show {
+            display: block;
+        }
+        .hint-header {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hint-badge {
+            background: #ebf8ff;
+            color: #2b6cb0;
+            font-size: 0.78rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .hint-section {
+            margin-bottom: 12px;
+        }
+        .hint-section-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #4a5568;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .hint-point-text {
+            font-size: 0.9rem;
+            color: #2b6cb0;
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #edf2f7;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .hint-steps-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .hint-step-item {
+            font-size: 0.88rem;
+            color: #2d3748;
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #edf2f7;
+            line-height: 1.6;
+        }
+        .hint-traps-text {
+            font-size: 0.86rem;
+            color: #c53030;
+            background: #fff5f5;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #fed7d7;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
         /* 图片题目渲染容器：纯净呈现，零水印，无截断 */
         .img-container { 
             width: 100%; 
@@ -335,6 +450,44 @@
             border-bottom: 1px solid #edf2f7;
             flex-wrap: wrap;
             gap: 8px;
+        }
+        .list-hint-toggle-btn {
+            background: #f7fafc;
+            color: #2b6cb0;
+            border: 1px dashed #bee3f8;
+            padding: 4px 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .list-hint-toggle-btn:hover {
+            background: #ebf8ff;
+            border-color: #63b3ed;
+        }
+        .list-hint-toggle-btn.active {
+            background: #ebf8ff;
+            border-style: solid;
+            border-color: #3182ce;
+            color: #2c5282;
+        }
+        .list-hint-box {
+            display: none;
+            margin-top: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 3px solid #3182ce;
+            border-radius: 6px;
+            padding: 12px;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+        .list-hint-box.show {
+            display: block;
         }
 
         /* 放大查看模态框 */
@@ -507,6 +660,32 @@
             <div id="img-container" class="img-container">
                 <img id="q-img" src="" alt="题目高清图片" loading="eager" onclick="openZoom(this.src)">
                 <div class="zoom-tip">🔍 点击题目图片可全屏高清放大查看</div>
+            </div>
+
+            <!-- 解题思路折叠卡片（方案A：分步展开，不剧透，独立思考后可查看） -->
+            <div id="hint-wrap" class="hint-btn-wrap">
+                <button id="hint-toggle-btn" class="hint-toggle-btn" onclick="toggleHint()">
+                    <span>💡 查看解题思路与考点剖析</span>
+                    <span id="hint-toggle-icon">▼</span>
+                </button>
+                <div id="hint-box" class="hint-box">
+                    <div class="hint-header">
+                        <span>🎯 考点与破题指导</span>
+                        <span id="hint-category-badge" class="hint-badge">核心考点</span>
+                    </div>
+                    <div class="hint-section">
+                        <div class="hint-section-title">📌 考察核心原理与公式：</div>
+                        <div id="hint-point" class="hint-point-text"></div>
+                    </div>
+                    <div class="hint-section">
+                        <div class="hint-section-title">🧠 解题突破口与标准步骤：</div>
+                        <ul id="hint-steps" class="hint-steps-list"></ul>
+                    </div>
+                    <div class="hint-section" style="margin-bottom:0;">
+                        <div class="hint-section-title" style="color:#c53030;">⚠️ 考场易错点与避坑提示：</div>
+                        <div id="hint-traps" class="hint-traps-text"></div>
+                    </div>
+                </div>
             </div>
 
             <div id="q-placeholder" class="placeholder">
@@ -837,6 +1016,9 @@
             // 更新错题按钮状态
             updateCardWrongButton(isWrong(q.id));
 
+            // 更新并重置解题思路折叠框
+            renderCardHint(q);
+
             placeholder.style.display = 'none';
             cardHeader.style.display = 'flex';
             imgContainer.style.display = 'block';
@@ -844,6 +1026,110 @@
             imgContainer.classList.remove('fade-in');
             void imgContainer.offsetWidth;
             imgContainer.classList.add('fade-in');
+        }
+
+        // ======== 解题思路与考点剖析功能 (方案 A) ========
+        function getGuideForQuestion(q) {
+            if (typeof knowledgeGuides === 'undefined') return null;
+            if (q.sub_type && knowledgeGuides[q.sub_type]) {
+                return { guide: knowledgeGuides[q.sub_type], title: q.sub_type };
+            }
+            // 降级为一级类型查找
+            for (let k in knowledgeGuides) {
+                if (k.includes(q.type) || q.type.includes(k)) {
+                    return { guide: knowledgeGuides[k], title: k };
+                }
+            }
+            return {
+                guide: {
+                    point: q.type + (q.sub_type ? ' - ' + q.sub_type : ''),
+                    steps: [
+                        '1. 【审清题意】：根据题目所给条件，明确输入输出变量与系统类型；',
+                        '2. 【套用经典范式】：列写时域微分方程/传递函数/状态方程，代入特征参数求解；',
+                        '3. 【检验结果】：检验结果物理意义及稳定性充要条件。'
+                    ],
+                    traps: '注意分母多项式零极点代数符号，避免正负符号与单位粗心失误。'
+                },
+                title: q.sub_type || q.type
+            };
+        }
+
+        function renderCardHint(q) {
+            const hintWrap = document.getElementById('hint-wrap');
+            const hintBtn = document.getElementById('hint-toggle-btn');
+            const hintBox = document.getElementById('hint-box');
+            const hintIcon = document.getElementById('hint-toggle-icon');
+            const badge = document.getElementById('hint-category-badge');
+            const pointEl = document.getElementById('hint-point');
+            const stepsEl = document.getElementById('hint-steps');
+            const trapsEl = document.getElementById('hint-traps');
+
+            // 切换题目时默认收起思路，保持独立思考空间
+            hintBox.classList.remove('show');
+            hintBtn.classList.remove('active');
+            hintIcon.textContent = '▼';
+            hintBtn.querySelector('span:first-child').textContent = '💡 查看解题思路与考点剖析';
+
+            const info = getGuideForQuestion(q);
+            if (!info || !info.guide) {
+                hintWrap.style.display = 'none';
+                return;
+            }
+
+            badge.textContent = '🎯 ' + info.title;
+            pointEl.textContent = info.guide.point;
+
+            let stepsHtml = '';
+            info.guide.steps.forEach(step => {
+                stepsHtml += `<li class="hint-step-item">${step}</li>`;
+            });
+            stepsEl.innerHTML = stepsHtml;
+            trapsEl.textContent = info.guide.traps;
+
+            hintWrap.style.display = 'block';
+        }
+
+        function toggleHint() {
+            const hintBox = document.getElementById('hint-box');
+            const hintBtn = document.getElementById('hint-toggle-btn');
+            const hintIcon = document.getElementById('hint-toggle-icon');
+            const textSpan = hintBtn.querySelector('span:first-child');
+
+            const isShown = hintBox.classList.contains('show');
+            if (isShown) {
+                hintBox.classList.remove('show');
+                hintBtn.classList.remove('active');
+                hintIcon.textContent = '▼';
+                textSpan.textContent = '💡 查看解题思路与考点剖析';
+            } else {
+                hintBox.classList.add('show');
+                hintBtn.classList.add('active');
+                hintIcon.textContent = '▲';
+                textSpan.textContent = '💡 收起解题思路与考点剖析';
+            }
+        }
+
+        function toggleListHint(btn, qId) {
+            const item = btn.closest('.list-item');
+            if (!item) return;
+            const hintBox = item.querySelector('.list-hint-box');
+            if (!hintBox) return;
+
+            const isShown = hintBox.classList.contains('show');
+            const icon = btn.querySelector('.list-hint-icon');
+            const textSpan = btn.querySelector('.list-hint-text');
+
+            if (isShown) {
+                hintBox.classList.remove('show');
+                btn.classList.remove('active');
+                if (icon) icon.textContent = '▼';
+                if (textSpan) textSpan.textContent = '💡 查看思路';
+            } else {
+                hintBox.classList.add('show');
+                btn.classList.add('active');
+                if (icon) icon.textContent = '▲';
+                if (textSpan) textSpan.textContent = '💡 收起思路';
+            }
         }
 
         // ======== 随机抽题 ========
@@ -918,6 +1204,61 @@
             document.getElementById('nav-bar').style.display = 'flex';
         }
 
+        function buildListItemHtml(q) {
+            const isModern = q.type === '现代控制理论';
+            const marked = isWrong(q.id);
+            const info = getGuideForQuestion(q);
+            let stepsHtml = '';
+            if (info && info.guide) {
+                info.guide.steps.forEach(s => {
+                    stepsHtml += `<li class="hint-step-item">${s}</li>`;
+                });
+            }
+
+            return `
+            <div class="list-item">
+                <div class="list-item-header">
+                    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                        <span class="year-tag">📅 ${q.year}真题</span>
+                        <span class="info-tag">${q.q_num}</span>
+                        <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
+                        ${q.sub_type ? `<span class="sub-tag">🎯 ${q.sub_type}</span>` : ''}
+                    </div>
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <button class="list-hint-toggle-btn" onclick="toggleListHint(this, ${q.id})">
+                            <span class="list-hint-text">💡 查看思路</span>
+                            <span class="list-hint-icon">▼</span>
+                        </button>
+                        <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
+                            ${marked ? '★ 已收录' : '☆ 标为错题'}
+                        </button>
+                    </div>
+                </div>
+                <div class="img-container" style="display:block;">
+                    <img src="${q.url}?v=${CACHE_VERSION}" alt="${q.year} ${q.q_num}" loading="lazy" onclick="openZoom(this.src)">
+                </div>
+                ${info && info.guide ? `
+                <div class="list-hint-box">
+                    <div class="hint-header" style="font-size:0.9rem;margin-bottom:8px;">
+                        <span>🎯 考点思路与解题范式</span>
+                        <span class="hint-badge">${info.title}</span>
+                    </div>
+                    <div class="hint-section" style="margin-bottom:8px;">
+                        <div class="hint-section-title" style="font-size:0.84rem;">📌 核心原理与公式：</div>
+                        <div class="hint-point-text" style="font-size:0.86rem;padding:6px 10px;">${info.guide.point}</div>
+                    </div>
+                    <div class="hint-section" style="margin-bottom:8px;">
+                        <div class="hint-section-title" style="font-size:0.84rem;">🧠 解题关键步骤：</div>
+                        <ul class="hint-steps-list">${stepsHtml}</ul>
+                    </div>
+                    <div class="hint-section" style="margin-bottom:0;">
+                        <div class="hint-section-title" style="font-size:0.84rem;color:#c53030;">⚠️ 避坑提醒：</div>
+                        <div class="hint-traps-text" style="font-size:0.84rem;padding:6px 10px;">${info.guide.traps}</div>
+                    </div>
+                </div>` : ''}
+            </div>`;
+        }
+
         // ======== 错题本：整屏平铺通览 ========
         function showWrongListView(event) {
             const set = getWrongSet();
@@ -939,25 +1280,8 @@
                 📕 我的错题本 · 共收录 <b>${list.length}</b> 道重点真题（按年份由远及近排序）
             </div>`;
 
-            list.forEach((q, idx) => {
-                const isModern = q.type === '现代控制理论';
-                html += `
-                <div class="list-item">
-                    <div class="list-item-header">
-                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                            <span class="year-tag">📅 ${q.year}真题</span>
-                            <span class="info-tag">${q.q_num}</span>
-                            <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
-                            ${q.sub_type ? `<span class="sub-tag">🎯 ${q.sub_type}</span>` : ''}
-                        </div>
-                        <button class="wrong-toggle-btn active list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
-                            ★ 已收录
-                        </button>
-                    </div>
-                    <div class="img-container" style="display:block;">
-                        <img src="${q.url}?v=${CACHE_VERSION}" alt="${q.year} ${q.q_num}" loading="lazy" onclick="openZoom(this.src)">
-                    </div>
-                </div>`;
+            list.forEach((q) => {
+                html += buildListItemHtml(q);
             });
 
             container.innerHTML = html;
@@ -1002,26 +1326,8 @@
                 大纲一级考点：<b>${type}</b> · 共 <b>${list.length}</b> 道真题（按年份从2005到2025排序）
             </div>`;
 
-            list.forEach((q, idx) => {
-                const isModern = q.type === '现代控制理论';
-                const marked = isWrong(q.id);
-                html += `
-                <div class="list-item">
-                    <div class="list-item-header">
-                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                            <span class="year-tag">📅 ${q.year}真题</span>
-                            <span class="info-tag">${q.q_num}</span>
-                            <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
-                            ${q.sub_type ? `<span class="sub-tag">🎯 ${q.sub_type}</span>` : ''}
-                        </div>
-                        <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
-                            ${marked ? '★ 已收录' : '☆ 标为错题'}
-                        </button>
-                    </div>
-                    <div class="img-container" style="display:block;">
-                        <img src="${q.url}?v=${CACHE_VERSION}" alt="${q.year} ${q.q_num}" loading="lazy" onclick="openZoom(this.src)">
-                    </div>
-                </div>`;
+            list.forEach((q) => {
+                html += buildListItemHtml(q);
             });
 
             container.innerHTML = html;
@@ -1045,26 +1351,8 @@
                 🎯 细分二级考点：<b>${subType}</b> · 共 <b>${list.length}</b> 道精选真题（按年份从2005到2025排序）
             </div>`;
 
-            list.forEach((q, idx) => {
-                const isModern = q.type === '现代控制理论';
-                const marked = isWrong(q.id);
-                html += `
-                <div class="list-item">
-                    <div class="list-item-header">
-                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                            <span class="year-tag">📅 ${q.year}真题</span>
-                            <span class="info-tag">${q.q_num}</span>
-                            <span class="type-tag ${isModern ? 'modern-tag' : ''}">${isModern ? '🚀 ' : ''}${q.type}</span>
-                            <span class="sub-tag">🎯 ${q.sub_type}</span>
-                        </div>
-                        <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
-                            ${marked ? '★ 已收录' : '☆ 标为错题'}
-                        </button>
-                    </div>
-                    <div class="img-container" style="display:block;">
-                        <img src="${q.url}?v=${CACHE_VERSION}" alt="${q.year} ${q.q_num}" loading="lazy" onclick="openZoom(this.src)">
-                    </div>
-                </div>`;
+            list.forEach((q) => {
+                html += buildListItemHtml(q);
             });
 
             container.innerHTML = html;
