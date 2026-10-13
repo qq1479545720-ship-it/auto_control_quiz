@@ -378,6 +378,24 @@
             line-height: 1.5;
             font-weight: 500;
         }
+        .hint-answer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .hint-answer-item {
+            font-size: 0.88rem;
+            color: #22543d;
+            background: #f0fff4;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #c6f6d5;
+            line-height: 1.6;
+            font-weight: 600;
+        }
 
         /* 图片题目渲染容器：纯净呈现，零水印，无截断 */
         .img-container { 
@@ -680,6 +698,10 @@
                     <div class="hint-section">
                         <div class="hint-section-title">🧠 解题突破口与标准步骤：</div>
                         <ul id="hint-steps" class="hint-steps-list"></ul>
+                    </div>
+                    <div class="hint-section">
+                        <div class="hint-section-title" style="color:#22543d;">📝 规范参考答案与结论框架：</div>
+                        <ul id="hint-answers" class="hint-answer-list"></ul>
                     </div>
                     <div class="hint-section" style="margin-bottom:0;">
                         <div class="hint-section-title" style="color:#c53030;">⚠️ 考场易错点与避坑提示：</div>
@@ -1062,13 +1084,14 @@
             const badge = document.getElementById('hint-category-badge');
             const pointEl = document.getElementById('hint-point');
             const stepsEl = document.getElementById('hint-steps');
+            const answersEl = document.getElementById('hint-answers');
             const trapsEl = document.getElementById('hint-traps');
 
-            // 切换题目时默认收起思路，保持独立思考空间
+            // 切换题目时默认收起思路与答案，保持独立思考空间
             hintBox.classList.remove('show');
             hintBtn.classList.remove('active');
             hintIcon.textContent = '▼';
-            hintBtn.querySelector('span:first-child').textContent = '💡 查看解题思路与考点剖析';
+            hintBtn.querySelector('span:first-child').textContent = '💡 查看解题思路与参考答案';
 
             const info = getGuideForQuestion(q);
             if (!info || !info.guide) {
@@ -1084,6 +1107,15 @@
                 stepsHtml += `<li class="hint-step-item">${step}</li>`;
             });
             stepsEl.innerHTML = stepsHtml;
+
+            let answersHtml = '';
+            if (info.guide.answer_template) {
+                info.guide.answer_template.forEach(ans => {
+                    answersHtml += `<li class="hint-answer-item">${ans}</li>`;
+                });
+            }
+            answersEl.innerHTML = answersHtml;
+
             trapsEl.textContent = info.guide.traps;
 
             hintWrap.style.display = 'block';
@@ -1100,12 +1132,12 @@
                 hintBox.classList.remove('show');
                 hintBtn.classList.remove('active');
                 hintIcon.textContent = '▼';
-                textSpan.textContent = '💡 查看解题思路与考点剖析';
+                textSpan.textContent = '💡 查看解题思路与参考答案';
             } else {
                 hintBox.classList.add('show');
                 hintBtn.classList.add('active');
                 hintIcon.textContent = '▲';
-                textSpan.textContent = '💡 收起解题思路与考点剖析';
+                textSpan.textContent = '💡 收起解题思路与参考答案';
             }
         }
 
@@ -1209,10 +1241,16 @@
             const marked = isWrong(q.id);
             const info = getGuideForQuestion(q);
             let stepsHtml = '';
+            let answersHtml = '';
             if (info && info.guide) {
                 info.guide.steps.forEach(s => {
                     stepsHtml += `<li class="hint-step-item">${s}</li>`;
                 });
+                if (info.guide.answer_template) {
+                    info.guide.answer_template.forEach(a => {
+                        answersHtml += `<li class="hint-answer-item" style="font-size:0.84rem;padding:6px 10px;">${a}</li>`;
+                    });
+                }
             }
 
             return `
@@ -1226,7 +1264,7 @@
                     </div>
                     <div style="display:flex;align-items:center;gap:6px;">
                         <button class="list-hint-toggle-btn" onclick="toggleListHint(this, ${q.id})">
-                            <span class="list-hint-text">💡 查看思路</span>
+                            <span class="list-hint-text">💡 查看思路与答案</span>
                             <span class="list-hint-icon">▼</span>
                         </button>
                         <button class="wrong-toggle-btn ${marked ? 'active' : ''} list-wrong-btn" data-id="${q.id}" onclick="toggleWrong(${q.id}, event)">
@@ -1250,6 +1288,10 @@
                     <div class="hint-section" style="margin-bottom:8px;">
                         <div class="hint-section-title" style="font-size:0.84rem;">🧠 解题关键步骤：</div>
                         <ul class="hint-steps-list">${stepsHtml}</ul>
+                    </div>
+                    <div class="hint-section" style="margin-bottom:8px;">
+                        <div class="hint-section-title" style="font-size:0.84rem;color:#22543d;">📝 规范参考答案与结论框架：</div>
+                        <ul class="hint-answer-list">${answersHtml}</ul>
                     </div>
                     <div class="hint-section" style="margin-bottom:0;">
                         <div class="hint-section-title" style="font-size:0.84rem;color:#c53030;">⚠️ 避坑提醒：</div>
