@@ -7,6 +7,7 @@
     
     <script src="classified_data.js"></script>
     <script src="knowledge_guides.js"></script>
+    <script src="specific_answers.js"></script>
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1050,16 +1051,32 @@
             imgContainer.classList.add('fade-in');
         }
 
-        // ======== 解题思路与考点剖析功能 (方案 A) ========
+        // ======== 解题思路与考点剖析功能 (方案 A + 精准单题专属答案) ========
         function getGuideForQuestion(q) {
-            if (typeof knowledgeGuides === 'undefined') return null;
-            if (q.sub_type && knowledgeGuides[q.sub_type]) {
-                return { guide: knowledgeGuides[q.sub_type], title: q.sub_type };
+            // 优先匹配精准真题库（具体到每道题的数字答案和量化求解过程）
+            if (typeof specificAnswers !== 'undefined' && specificAnswers[String(q.id)]) {
+                const sp = specificAnswers[String(q.id)];
+                return {
+                    guide: {
+                        point: sp.point,
+                        steps: sp.steps,
+                        answer_template: sp.answers,
+                        traps: sp.traps
+                    },
+                    title: sp.title || (q.year + ' ' + q.q_num),
+                    isSpecific: true
+                };
             }
-            // 降级为一级类型查找
-            for (let k in knowledgeGuides) {
-                if (k.includes(q.type) || q.type.includes(k)) {
-                    return { guide: knowledgeGuides[k], title: k };
+
+            // 兜底匹配考点核心解题套路与题型模板
+            if (typeof knowledgeGuides !== 'undefined' && q.sub_type && knowledgeGuides[q.sub_type]) {
+                return { guide: knowledgeGuides[q.sub_type], title: q.sub_type, isSpecific: false };
+            }
+            if (typeof knowledgeGuides !== 'undefined') {
+                for (let k in knowledgeGuides) {
+                    if (k.includes(q.type) || q.type.includes(k)) {
+                        return { guide: knowledgeGuides[k], title: k, isSpecific: false };
+                    }
                 }
             }
             return {
@@ -1070,9 +1087,13 @@
                         '2. 【套用经典范式】：列写时域微分方程/传递函数/状态方程，代入特征参数求解；',
                         '3. 【检验结果】：检验结果物理意义及稳定性充要条件。'
                     ],
+                    answer_template: [
+                        '【核心结论】：求得系统传递函数或闭环特征多项式规范解析式。'
+                    ],
                     traps: '注意分母多项式零极点代数符号，避免正负符号与单位粗心失误。'
                 },
-                title: q.sub_type || q.type
+                title: q.sub_type || q.type,
+                isSpecific: false
             };
         }
 
@@ -1099,7 +1120,15 @@
                 return;
             }
 
-            badge.textContent = '🎯 ' + info.title;
+            if (info.isSpecific) {
+                badge.textContent = '🌟 本题官方专属真题题解';
+                badge.style.background = '#fefcbf';
+                badge.style.color = '#744210';
+            } else {
+                badge.textContent = '🎯 ' + info.title;
+                badge.style.background = '#ebf8ff';
+                badge.style.color = '#2b6cb0';
+            }
             pointEl.textContent = info.guide.point;
 
             let stepsHtml = '';
@@ -1278,8 +1307,8 @@
                 ${info && info.guide ? `
                 <div class="list-hint-box">
                     <div class="hint-header" style="font-size:0.9rem;margin-bottom:8px;">
-                        <span>🎯 考点思路与解题范式</span>
-                        <span class="hint-badge">${info.title}</span>
+                        <span>${info.isSpecific ? '🌟 本题官方专属真题题解' : '🎯 考点思路与解题范式'}</span>
+                        <span class="hint-badge" style="${info.isSpecific ? 'background:#fefcbf;color:#744210;' : ''}">${info.title}</span>
                     </div>
                     <div class="hint-section" style="margin-bottom:8px;">
                         <div class="hint-section-title" style="font-size:0.84rem;">📌 核心原理与公式：</div>
